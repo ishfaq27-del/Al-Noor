@@ -1,0 +1,8 @@
+{
+  "name": "Remix CodeReader",
+  "description": "Instantly scan, decode, and understand programming code snippets with ease.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

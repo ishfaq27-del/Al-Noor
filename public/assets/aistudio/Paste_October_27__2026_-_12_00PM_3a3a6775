@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Al Noor Roza Tul Ilm Public High School, Manki, Swabi</title>
+<style>
+:root{--bg:#f1f6f4;--card:#fff;--ink:#12302a;--mute:#5b736d;--line:#d5e2de;--green:#0f6b57;--green-t:#d6efe6;--red:#b3261e;--red-t:#fadcd9;--amber:#8a5a00;--amber-t:#fbebc4;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1815;--card:#142520;--ink:#e3f1ed;--mute:#93aca5;--line:#27403a;--green:#4fc3a1;--green-t:#12372d;--red:#ff8a80;--red-t:#4a1b17;--amber:#f2c261;--amber-t:#43330c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0c1815;--card:#142520;--ink:#e3f1ed;--mute:#93aca5;--line:#27403a;--green:#4fc3a1;--green-t:#12372d;--red:#ff8a80;--red-t:#4a1b17;--amber:#f2c261;--amber-t:#43330c;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Atkinson Hyperlegible",system-ui,sans-serif}
+main{max-width:560px;margin:0 auto;padding:16px}
+h1{font-size:1.5rem;margin:8px 0 2px}
+.sub{color:var(--mute);margin:0 0 16px}
+.tabs{display:flex;gap:6px;margin-bottom:14px}
+.tabs button{flex:1;padding:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;font:inherit;font-weight:700;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--green);color:var(--bg);border-color:var(--green)}
+.row{display:flex;gap:8px;align-items:center}
+input{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+input:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.btn{font:inherit;font-weight:700;border:0;border-radius:10px;padding:10px 14px;background:var(--green);color:var(--bg);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--green);border:1px solid var(--green)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.stat{padding:10px;border-radius:12px;text-align:center;font-weight:700}
+.stat b{display:block;font-size:1.6rem;line-height:1.2}
+.s-p{background:var(--green-t);color:var(--green)}.s-a{background:var(--red-t);color:var(--red)}.s-l{background:var(--amber-t);color:var(--amber)}
+.item{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.roll{width:34px;color:var(--mute);font-weight:700}
+.name{flex:1;min-width:0;overflow-wrap:anywhere}
+.seg{display:flex;gap:4px}
+.seg button{width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--mute);font:inherit;font-weight:700;cursor:pointer}
+.seg button.on[data-v="P"]{background:var(--green);color:var(--bg);border-color:var(--green)}
+.seg button.on[data-v="A"]{background:var(--red);color:var(--bg);border-color:var(--red)}
+.seg button.on[data-v="L"]{background:var(--amber);color:var(--bg);border-color:var(--amber)}
+.pct{font-weight:700;min-width:52px;text-align:right}
+.del{background:none;border:0;color:var(--mute);font-size:1.3rem;cursor:pointer;padding:4px 8px}
+.empty{text-align:center;color:var(--mute);padding:28px 8px;border:1px dashed var(--line);border-radius:12px}
+.bar{height:6px;border-radius:3px;background:var(--line);margin-top:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--green)}
+.hint{color:var(--mute);font-size:.9rem;margin:6px 0 12px}
+.clsbar{display:flex;gap:8px;margin-bottom:12px}
+.tinfo{display:flex;align-items:center;gap:10px;background:var(--green-t);color:var(--green);border-radius:12px;padding:8px 8px 8px 14px;margin-bottom:12px;font-weight:700}
+.tinfo span{flex:1;min-width:0;overflow-wrap:anywhere}
+.tinfo .btn{padding:8px 12px}
+select{flex:1;min-width:0;font:inherit;font-weight:700;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+select:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.brand{display:flex;align-items:center;gap:12px;margin:4px 0 10px}
+.brand img{width:64px;height:64px;border-radius:12px;background:#fff;flex:none}
+.brand h1{font-size:1.2rem;line-height:1.25;margin:0}
+.loc{margin:2px 0 0;color:var(--mute);font-weight:700}
+.h2{font-size:1.05rem;margin:16px 0 8px}
+.credit{margin:28px 0 8px;padding-top:12px;border-top:1px solid var(--line);text-align:center;color:var(--mute);font-size:.9rem}
+.addgrid{display:grid;grid-template-columns:84px 1fr;gap:8px;margin-bottom:12px}
+.addgrid #fname,.addgrid .row{grid-column:1/-1}
+.chips{display:flex;gap:6px;margin-bottom:12px}
+.chips button{flex:1;padding:8px 4px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;font:inherit;font-weight:700;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--green);color:var(--bg);border-color:var(--green)}
+.sub2{color:var(--mute);font-size:.85rem;font-weight:400}
+.tag{display:inline-block;padding:0 8px;border-radius:999px;background:var(--green-t);color:var(--green);font-weight:700;font-size:.78rem;margin-left:4px}
+/* colorful theme */
+:root{--blue:#1d5fd1;--blue-t:#dbe8ff;--purple:#6d3bd2;--purple-t:#e8defc;--orange:#d9630b;--orange-t:#ffe6d1;--page:linear-gradient(180deg,#dff3ea 0,#e6eefc 50%,#f4e8fa 100%);--hero:linear-gradient(135deg,#0f6b57,#12839a 55%,#2a5bd7)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--blue:#7aa7ff;--blue-t:#172a52;--purple:#b799ff;--purple-t:#2b1d52;--orange:#ffab6b;--orange-t:#4a2a10;--page:linear-gradient(180deg,#0a1a16 0,#0b1427 55%,#160d26 100%)}}
+:root[data-theme="dark"]{--blue:#7aa7ff;--blue-t:#172a52;--purple:#b799ff;--purple-t:#2b1d52;--orange:#ffab6b;--orange-t:#4a2a10;--page:linear-gradient(180deg,#0a1a16 0,#0b1427 55%,#160d26 100%)}
+body{background:var(--page);background-attachment:fixed}
+.brand{padding:14px;border-radius:18px;background:var(--hero);box-shadow:0 6px 18px rgba(15,107,87,.28)}
+.brand h1{color:#fff}
+.brand .loc{color:#d9f3ea}
+.brand img{border:3px solid rgba(255,255,255,.75)}
+.sub{font-weight:700;color:var(--green)}
+.btn{background:var(--hero);color:#fff}
+.btn.ghost{background:transparent;color:var(--green)}
+input,select{border-width:2px;border-color:var(--blue-t)}
+.tabs button{border-width:2px;font-size:1rem}
+.tabs button#t-mark{color:var(--green);border-color:var(--green)}
+.tabs button#t-students{color:var(--blue);border-color:var(--blue)}
+.tabs button#t-report{color:var(--purple);border-color:var(--purple)}
+.tabs button#t-mark[aria-selected="true"]{background:linear-gradient(135deg,#12a37c,#0f6b57);color:#fff}
+.tabs button#t-students[aria-selected="true"]{background:linear-gradient(135deg,#3b82f6,#1d4fc4);color:#fff}
+.tabs button#t-report[aria-selected="true"]{background:linear-gradient(135deg,#9b6bff,#6232d1);color:#fff}
+.stat{box-shadow:0 4px 12px rgba(0,0,0,.14)}
+.s-p{background:linear-gradient(135deg,#22b88f,#0f6b57);color:#fff}
+.s-a{background:linear-gradient(135deg,#f0646a,#b3261e);color:#fff}
+.s-l{background:linear-gradient(135deg,#f7b733,#c77700);color:#fff}
+.item{border-width:1px 1px 1px 5px;border-left-color:var(--line);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.item.st-P{border-left-color:#1aa57f}
+.item.st-A{border-left-color:#e5484d}
+.item.st-L{border-left-color:#f5a524}
+.roll{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--green-t);color:var(--green);font-size:.85rem;flex:none}
+.item:nth-child(4n+2) .roll{background:var(--blue-t);color:var(--blue)}
+.item:nth-child(4n+3) .roll{background:var(--purple-t);color:var(--purple)}
+.item:nth-child(4n+4) .roll{background:var(--orange-t);color:var(--orange)}
+.seg button{border-width:2px}
+.seg button[data-v="P"]{color:var(--green);border-color:var(--green-t)}
+.seg button[data-v="A"]{color:var(--red);border-color:var(--red-t)}
+.seg button[data-v="L"]{color:var(--amber);border-color:var(--amber-t)}
+.tinfo{background:linear-gradient(90deg,var(--green-t),var(--blue-t));color:var(--ink)}
+.tinfo span{color:var(--ink)}
+.chips button{border-width:2px;color:var(--blue);border-color:var(--blue-t)}
+.chips button[aria-pressed="true"]{color:#fff;background:linear-gradient(135deg,#3b82f6,#1d4fc4);border-color:transparent}
+.bar{height:8px}
+.bar i{background:linear-gradient(90deg,#22b88f,#3b82f6,#9b6bff)}
+.pct{color:var(--blue)}
+.h2{color:var(--purple)}
+.empty{background:var(--card);border-color:var(--blue)}
+.credit{color:var(--purple);font-weight:700}
+#printArea{display:none}
+@media print{
+  @page{margin:12mm}
+  body{background:#fff!important;color:#000;font-size:12pt}
+  main{display:none!important}
+  #printArea{display:block}
+  #printArea .ph{display:flex;align-items:center;gap:14px;border-bottom:3px solid #0f6b57;padding-bottom:8px;margin-bottom:10px}
+  #printArea .ph img{width:72px;height:72px}
+  #printArea h2{margin:0;color:#0f6b57;font-size:18pt}
+  #printArea h3{color:#1d5fd1;margin:8px 0 4px;font-size:14pt}
+  #printArea table{width:100%;border-collapse:collapse;margin-top:10px}
+  #printArea thead{display:table-header-group}
+  #printArea tr{break-inside:avoid}
+  #printArea th,#printArea td{border:1px solid #888;padding:5px 7px;font-size:11pt;text-align:left}
+  #printArea th{background:#d6e8ff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #printArea .P{color:#0f6b57;font-weight:bold}
+  #printArea .A{color:#b3261e;font-weight:bold}
+  #printArea .L{color:#8a5a00;font-weight:bold}
+  #printArea .sig{margin:40px 0 4px auto;width:220px;border-top:1px solid #000;padding-top:4px;text-align:center}
+  #printArea .by{margin-top:18px;text-align:center;font-size:9pt;color:#555}
+}
+#printBtn,#printAll,#pdfBtn,#pdfAll{margin:0 6px 8px 0}
+.dv{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.dvh{padding:8px 12px;font-weight:700;color:#fff}
+.s-n{background:linear-gradient(135deg,#6b8a83,#46605a);color:#fff}
+.dvr{display:flex;gap:10px;padding:7px 12px;border-top:1px solid var(--line)}
+.dvr>span:first-child{width:34px;font-weight:700;color:var(--mute);flex:none}
+@media print{
+  #printArea .cls{break-after:page}
+  #printArea .cls:last-child{break-after:auto}
+  #printArea .sec{margin-top:12px;padding:5px 8px;color:#fff;font-weight:bold;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #printArea .sec+table{margin-top:0}
+  #printArea .Pb{background:#0f6b57}
+  #printArea .Ab{background:#b3261e}
+  #printArea .Lb{background:#c77700}
+  #printArea .Nb{background:#5b736d}
+  #printArea .tot{margin-top:4px;font-weight:bold}
+}
+.wabox{margin-top:6px}
+.btn.wa{background:linear-gradient(135deg,#3b82f6,#1d4fc4);color:#fff;margin:0 6px 8px 0}
+.btn.wa2{background:linear-gradient(135deg,#25b866,#128C7E);color:#fff;margin:0 6px 8px 0}
+.bkbox{margin-top:22px;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.bkbox .btn{margin:0 6px 8px 0}
+[hidden]{display:none!important}
+
+.bkbox{margin-top:20px}
+.bkrow{flex-wrap:wrap;margin:6px 0}
+.bkalt{margin-top:10px;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--card)}
+.bkalt summary{cursor:pointer;font-weight:700;color:var(--green)}
+.bkbox textarea{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:.85rem;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0;resize:vertical}
+.bkbox textarea:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+</style>
+<script id="lib-jszip">/* JSZip library (minified, ~97KB) goes here */</script>
+<script id="lib-pdflib">/* pdf-lib library (minified, ~520KB) goes here */</script>
+</head>
+<body>
+<main>
+  <header class="brand"><img src="data:image/jpeg;base64,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" id="logo" alt="Al-Noor school logo" width="64" height="64"><div><h1>Al Noor Roza Tul Ilm Public High School</h1><p class="loc">Manki, Swabi</p></div></header>
+  <p class="sub">Student attendance: take daily attendance and view reports.</p>
+  <div class="clsbar">
+    <select id="cls" aria-label="Class"></select>
+    <button class="btn ghost" id="newCls">+ New class</button>
+  </div>
+  <div class="tinfo" id="tinfo"></div>
+  <div class="row" id="clsForm" hidden style="margin-bottom:12px;flex-wrap:wrap">
+    <input id="clsName" placeholder="Class name (e.g. 5-A)" aria-label="Class name" style="flex:1 1 150px">
+    <input id="tName" placeholder="Teacher name" aria-label="Teacher name" style="flex:1 1 150px">
+    
+    <button class="btn" id="clsOk">Save</button>
+    <button class="btn ghost" id="clsCancel">Cancel</button>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button role="tab" id="t-mark" aria-selected="true">Attendance</button>
+    <button role="tab" id="t-students" aria-selected="false">Students</button>
+    <button role="tab" id="t-report" aria-selected="false">Report</button>
+  </div>
+
+  <section id="v-mark">
+    <div class="row">
+      <input type="date" id="date" aria-label="Date" style="flex:1">
+      <button class="btn ghost" id="allP">Mark all present</button>
+    </div>
+    <div class="stats">
+      <div class="stat s-p"><b id="cP">0</b>Present</div>
+      <div class="stat s-a"><b id="cA">0</b>Absent</div>
+      <div class="stat s-l"><b id="cL">0</b>Leave</div>
+    </div>
+    <div id="markList"></div>
+    <p class="hint">P = Present, A = Absent, L = Leave. Every tap is saved automatically.</p>
+    <button class="btn ghost" id="printBtn">Print this class</button>
+    <button class="btn ghost" id="printAll">Print all classes</button>
+    <button class="btn" id="pdfBtn">PDF: this class</button>
+    <button class="btn" id="pdfAll">PDF: all classes</button>
+    <div class="wabox">
+      <div class="hint" style="margin:6px 0">Share on WhatsApp (pick WhatsApp in the share window)</div>
+      <button class="btn wa2" id="shJ1">JPG: this class</button>
+      <button class="btn wa2" id="shJA">JPG: all classes</button>
+      <button class="btn wa" id="shP1">PDF: this class</button>
+      <button class="btn wa" id="shPA">PDF: all classes</button>
+    </div>
+    <p class="hint" id="pdfMsg" role="status"></p>
+  </section>
+
+  <section id="v-students" hidden>
+    <div class="addgrid">
+      <input id="roll" inputmode="numeric" placeholder="Roll" aria-label="Roll number">
+      <input id="sname" placeholder="Student name" aria-label="Student name">
+      <input id="fname" placeholder="Father name" aria-label="Father name">
+      <button class="btn" id="add" style="grid-column:1/-1">Add student</button>
+    </div>
+    <div style="margin-bottom:14px">
+      <button class="btn ghost" id="xbtn">Import names from Excel</button>
+      <button class="btn ghost" id="tplBtn" style="margin-left:6px">Download Excel template</button>
+      <input type="file" id="xfile" accept=".xlsx,.csv" hidden>
+      <p class="hint" id="xmsg">Columns: Roll No, Student Name, Father Name. Use an .xlsx or .csv file. Only the name is required. Students are added to the class selected above.</p>
+      <div id="xprev" hidden></div>
+    </div>
+    <button class="btn ghost" id="printStu" style="margin-bottom:12px">Print student list</button>
+    <div id="stuList"></div>
+    <button class="btn ghost" id="delCls" style="margin-top:12px">Delete class</button>
+  </section>
+
+  <section id="v-report" hidden>
+    <div class="row" style="margin-bottom:10px"><input type="date" id="rdate" aria-label="Report date" style="flex:1"></div>
+    <div id="dayView"></div>
+    <p class="hint" id="repHint"></p>
+    <button class="btn ghost" id="printRep" style="margin-bottom:12px">Print report</button>
+    <h2 class="h2" id="dayHead" hidden>Daily PDF reports</h2>
+    <div id="dayList"></div>
+    <h2 class="h2">Attendance by student</h2>
+    <div id="repList"></div>
+  </section>
+<div class="bkbox">
+  <h2 class="h2" style="margin-top:0">Backup &amp; Restore</h2>
+  <div class="row bkrow">
+    <button class="btn" id="bkBtn">Backup</button>
+    <button class="btn ghost" id="rsBtn">Restore backup</button>
+  </div>
+  <input type="file" id="rsFile" hidden>
+  <div id="bkPrev" class="row" hidden style="margin:8px 0 4px"><button class="btn" id="bkOk">Restore now</button><button class="btn ghost" id="bkNo">Cancel</button></div>
+  <p class="hint" id="bkMsg" role="status" style="margin:8px 0">Backup saves all classes, students and attendance in one file. Restore brings them back.</p>
+  <details class="bkalt">
+    <summary>File not saving or opening? Use text instead</summary>
+    <p class="hint" style="margin-top:8px">Tap Copy backup text, then paste it into WhatsApp, Notes or email to keep it. To restore, paste the text below and tap Restore from text.</p>
+    <div class="row bkrow"><button class="btn ghost" id="bkCopy">Copy backup text</button></div>
+    <textarea id="bkText" rows="4" placeholder="Paste backup text here" aria-label="Backup text"></textarea>
+    <div class="row bkrow"><button class="btn ghost" id="bkPaste">Restore from text</button></div>
+  </details>
+</div>
+<footer class="credit">Prepared by Muhammad Ishfaq<br>Phone # 03149768207</footer>
+</main>
+<div id="printArea"></div>
+
+<script>
+(function(){
+  var KEY="attendance-v1";
+  var S={students:[],records:{}};
+  try{var raw=localStorage.getItem(KEY);if(raw){var p=JSON.parse(raw);if(p&&p.students&&p.records)S=p;}}catch(e){}
+  if(!S.classes||!S.classes.length){S.classes=[{id:"c1",name:"Class 1"}]}
+  S.students.forEach(function(s){if(!s.cls)s.cls=S.classes[0].id});
+  S.classes.forEach(function(c){delete c.grp});
+  if(!S.cur||!S.classes.some(function(c){return c.id===S.cur}))S.cur=S.classes[0].id;
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+  var $=function(id){return document.getElementById(id)};
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function today(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+  var dateEl=$("date");dateEl.value=today();
+
+  var tabs=["mark","students","report"];
+  function show(t){tabs.forEach(function(n){$("v-"+n).hidden=n!==t;$("t-"+n).setAttribute("aria-selected",n===t)});render()}
+  tabs.forEach(function(n){$("t-"+n).onclick=function(){show(n)}});
+
+  function rec(){return S.records[dateEl.value]||(S.records[dateEl.value]={})}
+  var gf="";
+  function inCls(){return S.students.filter(function(s){return s.cls===S.cur})}
+  function sorted(){return inCls().sort(function(a,b){return (parseInt(a.roll)||0)-(parseInt(b.roll)||0)})}
+
+  function renderMark(){
+    var list=$("markList"),r=S.records[dateEl.value]||{},c={P:0,A:0,L:0};
+    if(!sorted().length){list.innerHTML='<div class="empty">No students in this class yet. Go to the Students tab to add names.</div>'}
+    else list.innerHTML=sorted().map(function(s){
+      var v=r[s.id];if(v)c[v]++;
+      return '<div class="item st-'+(v||"N")+'"><span class="roll">'+esc(s.roll||"-")+'</span><span class="name">'+nameHtml(s)+'</span><div class="seg">'+
+      ["P","A","L"].map(function(k){return '<button data-id="'+s.id+'" data-v="'+k+'" class="'+(v===k?"on":"")+'" aria-pressed="'+(v===k)+'" aria-label="'+k+' for '+esc(s.name)+'">'+k+'</button>'}).join("")+'</div></div>'}).join("");
+    $("cP").textContent=c.P;$("cA").textContent=c.A;$("cL").textContent=c.L;
+  }
+  $("markList").onclick=function(e){
+    var b=e.target.closest("button[data-id]");if(!b)return;
+    var r=rec();r[b.dataset.id]=r[b.dataset.id]===b.dataset.v?undefined:b.dataset.v;
+    if(!r[b.dataset.id])delete r[b.dataset.id];
+    save();renderMark();
+  };
+  $("allP").onclick=function(){var r=rec();sorted().forEach(function(s){if(r[s.id]!=="A"&&r[s.id]!=="L")r[s.id]="P"});save();renderMark()};
+  dateEl.onchange=function(){if(!dateEl.value)dateEl.value=today();render()};
+
+  function renderStudents(){
+    $("stuList").innerHTML=sorted().length?sorted().map(function(s){
+      return '<div class="item"><span class="roll">'+esc(s.roll||"-")+'</span><span class="name">'+nameHtml(s)+'</span><button class="del" data-del="'+s.id+'" aria-label="Remove '+esc(s.name)+'">&times;</button></div>'}).join("")
+      :'<div class="empty">Type a roll number and name above, then tap Add.</div>';
+  }
+  function addStudent(){
+    var n=$("sname").value.trim();if(!n){$("sname").focus();return}
+    if(!S.cur){xmsg("Create a class in this group first (tap + New class).");return}
+    S.students.push({id:"s"+Date.now()+Math.floor(Math.random()*1000),name:n,roll:$("roll").value.trim(),father:$("fname").value.trim(),cls:S.cur});
+    $("sname").value="";$("fname").value="";$("roll").value=String((parseInt($("roll").value)||0)+1===1&&!$("roll").value?"":(parseInt($("roll").value)||0)+1);
+    save();renderStudents();$("sname").focus();
+  }
+  $("add").onclick=addStudent;
+  $("sname").onkeydown=function(e){if(e.key==="Enter")addStudent()};
+  $("stuList").onclick=function(e){
+    var b=e.target.closest("button[data-del]");if(!b)return;
+    var s=S.students.filter(function(x){return x.id===b.dataset.del})[0];
+    if(!s)return;
+    if(b.dataset.arm!=="1"){b.dataset.arm="1";b.textContent="Remove?";b.style.fontSize=".9rem";setTimeout(function(){b.dataset.arm="";b.textContent="\u00d7";b.style.fontSize=""},3000);return}
+    S.students=S.students.filter(function(x){return x.id!==s.id});
+    Object.keys(S.records).forEach(function(d){delete S.records[d][s.id]});
+    save();renderStudents();
+  };
+
+  function renderReport(){
+    var ids=sorted().map(function(s){return s.id});
+    var days=Object.keys(S.records).filter(function(d){return ids.some(function(id){return S.records[d][id]})});
+    renderDays(days);
+    $("repHint").textContent=(curCls().teacher?"Teacher: "+curCls().teacher+". ":"")+(days.length?days.length+(days.length===1?" day":" days")+" of attendance recorded.":"");
+    if(!ids.length||!days.length){$("repList").innerHTML='<div class="empty">The report appears after you mark attendance for at least one day.</div>';return}
+    $("repList").innerHTML=sorted().map(function(s){
+      var p=0,a=0,l=0;
+      days.forEach(function(d){var v=S.records[d][s.id];if(v==="P")p++;else if(v==="A")a++;else if(v==="L")l++});
+      var t=p+a+l,pc=t?Math.round(p/t*100):0;
+      return '<div class="item" style="display:block"><div class="row"><span class="roll">'+esc(s.roll||"-")+'</span><span class="name">'+nameHtml(s)+'</span><span class="pct">'+pc+'%</span></div>'+
+      '<div class="bar"><i style="width:'+pc+'%"></i></div><div class="hint" style="margin:6px 0 0">Present '+p+' · Absent '+a+' · Leave '+l+'</div></div>'}).join("");
+  }
+  function renderClasses(){
+    $("cls").innerHTML=!visCls().length?'<option>No classes</option>':visCls().map(function(c){return '<option value="'+c.id+'"'+(c.id===S.cur?' selected':'')+'>'+esc(c.name)+(c.teacher?' - '+esc(c.teacher):'')+' ('+S.students.filter(function(s){return s.cls===c.id}).length+')</option>'}).join("");
+  }
+  $("cls").onchange=function(){S.cur=$("cls").value;pending=[];$("xprev").hidden=true;save();render()};
+  var editing=null;
+  function openForm(c){editing=c;$("clsForm").hidden=false;$("clsName").value=c?c.name:"";$("tName").value=c?(c.teacher||""):"";$("clsName").focus()}
+  $("newCls").onclick=function(){openForm(null)};
+  function saveClass(){
+    var n=$("clsName").value.trim();if(!n){$("clsName").focus();return}
+    var t=$("tName").value.trim();
+    if(editing){editing.name=n;editing.teacher=t;$("clsForm").hidden=true;save();render();return}
+    var c={id:"c"+Date.now(),name:n,teacher:t};S.classes.push(c);S.cur=c.id;$("clsForm").hidden=true;save();show("students");
+  }
+  $("clsOk").onclick=saveClass;
+  $("clsName").onkeydown=function(e){if(e.key==="Enter")saveClass()};
+  $("clsCancel").onclick=function(){$("clsForm").hidden=true};
+  $("delCls").onclick=function(){
+    var b=$("delCls");if(!S.cur)return;
+    if(S.classes.length<2){b.textContent="Keep at least one class";setTimeout(function(){b.textContent="Delete class"},2500);return}
+    if(b.dataset.arm!=="1"){b.dataset.arm="1";b.textContent="Sure? Tap again to delete";setTimeout(function(){b.dataset.arm="";b.textContent="Delete class"},3000);return}
+    b.dataset.arm="";b.textContent="Delete class";
+    var id=S.cur;
+    S.students.filter(function(s){return s.cls===id}).forEach(function(s){Object.keys(S.records).forEach(function(d){delete S.records[d][s.id]})});
+    S.students=S.students.filter(function(s){return s.cls!==id});
+    S.classes=S.classes.filter(function(c){return c.id!==id});S.cur=S.classes[0].id;save();render();
+  };
+  var pending=[],HINT=$("xmsg").textContent;
+  function xmsg(t){$("xmsg").textContent=t}
+  function parseSimple(rows){
+    var out=[];
+    rows.forEach(function(r){
+      var cells=r.map(function(x){return String(x==null?"":x).trim()}).filter(Boolean);
+      if(!cells.length)return;
+      var roll="",name="";
+      cells.forEach(function(c){var num=/^\d{1,5}$/.test(c);if(num){if(!roll)roll=c}else if(!name)name=c});
+      if(!name||/^(students?\s*)?(name|naam)s?$/i.test(name)||/^(roll|sr|s\.?\s*no|serial)/i.test(name))return;
+      out.push({name:name,roll:roll});
+    });
+    return out;
+  }
+  $("xbtn").onclick=function(){$("xfile").click()};
+  $("xfile").onchange=function(){
+    var f=this.files[0];this.value="";if(!f)return;
+    if(!S.cur){xmsg("Create a class in this group first (tap + New class).");return}
+    readRows(f).then(function(rows){
+      var have={},seen={},all=parseRows(rows);
+      inCls().forEach(function(s){have[key(s)]=1});
+      pending=all.filter(function(x){var k=key(x);if(have[k]||seen[k])return false;seen[k]=1;return true});
+      showPrev(all.length-pending.length);
+    }).catch(function(e){pending=[];$("xprev").hidden=true;xmsg(e&&e.message==="xls"?"Old .xls files are not supported. Open it in Excel, save it as .xlsx or .csv, then try again.":"Could not read this file. Choose an .xlsx or .csv file.")});
+  };
+  function showPrev(skipped){
+    var p=$("xprev");
+    if(!pending.length){p.hidden=true;xmsg(skipped?"All these names are already in this class.":"No names found in this file. Put the names in one column.");return}
+    xmsg(pending.length+" new names found"+(skipped?" ("+skipped+" already in this class, skipped)":"")+". Class: "+curCls().name);
+    p.hidden=false;
+    p.innerHTML='<div class="item" style="display:block;max-height:180px;overflow:auto">'+pending.slice(0,50).map(function(x){return '<div><span class="roll" style="display:inline-block">'+esc(x.roll||"-")+'</span> '+esc(x.name)+(x.father?' ('+esc(x.father)+')':'')+'</div>'}).join("")+(pending.length>50?'<div class="hint">and '+(pending.length-50)+' more</div>':'')+'</div><div class="row" style="margin-bottom:12px"><button class="btn" id="xok">Add to this class</button><button class="btn ghost" id="xno">Cancel</button></div>';
+    $("xok").onclick=importNow;
+    $("xno").onclick=function(){pending=[];p.hidden=true;xmsg(HINT)};
+  }
+  function importNow(){
+    var max=0;inCls().forEach(function(s){max=Math.max(max,parseInt(s.roll)||0)});
+    pending.forEach(function(x,i){S.students.push({id:"s"+Date.now()+i+Math.floor(Math.random()*1000),name:x.name,father:x.father||"",grp:x.grp||"",roll:x.roll||String(++max),cls:S.cur})});
+    var n=pending.length;pending=[];$("xprev").hidden=true;save();render();xmsg(n+" students added.");
+  }
+  var dl=null;
+  if(window.claude&&window.claude.use){window.claude.use("downloads").then(function(d){if(!d)return;dl=d;$("pdfBtn").hidden=false;$("pdfAll").hidden=false;$("tplBtn").hidden=false;renderReport()}).catch(function(){})}
+  function fmtDate(d){var q=d.split("-");return new Date(+q[0],+q[1]-1,+q[2]).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"})}
+  function lat(s){return String(s).replace(/[^\x20-\x7E\xA0-\xFF]/g,"?")}
+  function renderDays(days){
+    var show=days.length>0;
+    $("dayHead").hidden=!show;
+    $("dayList").innerHTML=show?days.slice().sort().reverse().map(function(d){
+      var c={P:0,A:0,L:0};sorted().forEach(function(s){var v=S.records[d][s.id];if(v)c[v]++});
+      return '<div class="item"><span class="name">'+esc(fmtDate(d))+'<div class="hint" style="margin:0">Absent '+c.A+', Leave '+c.L+'</div></span><button class="btn ghost" data-pdf="'+d+'" aria-label="Download PDF for '+esc(fmtDate(d))+'">PDF</button></div>'}).join(""):"";
+  }
+  $("dayList").onclick=function(e){var b=e.target.closest("button[data-pdf]");if(b)makePdf(b.dataset.pdf,$("repHint"))};
+  $("pdfBtn").onclick=function(){makePdf(dateEl.value,$("pdfMsg"),false)};
+  $("pdfAll").onclick=function(){makePdf(dateEl.value,$("pdfMsg"),true)};
+  function byRoll(a,b){return (parseInt(a.roll)||0)-(parseInt(b.roll)||0)}
+  function reportSets(date,all){
+    var r=S.records[date]||{};
+    return (all?S.classes:[curCls()]).filter(function(c){return c.id}).map(function(c){
+      var list=S.students.filter(function(s){return s.cls===c.id}).sort(byRoll);
+      var g={P:[],A:[],L:[],N:[]};list.forEach(function(s){g[r[s.id]||"N"].push(s)});
+      return {c:c,list:list,g:g};
+    }).filter(function(x){return x.list.length&&x.g.N.length<x.list.length});
+  }
+  function renderDayView(){
+    var x=reportSets(dateEl.value,false)[0],box=$("dayView");
+    if(!x){box.innerHTML='<div class="empty">No attendance marked for this class on '+esc(fmtDate(dateEl.value))+'.</div>';return}
+    box.innerHTML=[["A","Absent","s-a"],["L","Leave","s-l"]].map(function(k){
+      var a=x.g[k[0]];
+      return '<div class="dv"><div class="dvh '+k[2]+'">'+k[1]+' ('+a.length+')</div>'+(a.length?a.map(function(s){return '<div class="dvr"><span>'+esc(s.roll||"-")+'</span><div>'+nameHtml(s)+'</div></div>'}).join(""):'<div class="hint" style="padding:6px 12px;margin:0">None</div>')+'</div>'}).join("");
+  }
+  async function makePdf(date,out,all,share){
+    var PL=window.PDFLib;
+    if(!PL){out.textContent="The PDF tool did not load. Reload the page and try again.";return}
+    var sets=reportSets(date,all);
+    if(!sets.length){out.textContent=all?"No class has attendance marked for this day.":"Mark attendance for this day first.";return}
+    out.textContent="Preparing PDF...";
+    try{
+      var doc=await PL.PDFDocument.create();
+      var fR=await doc.embedFont(PL.StandardFonts.Helvetica),fB=await doc.embedFont(PL.StandardFonts.HelveticaBold),logo=null;
+      try{logo=await doc.embedJpg(b64bytes($("logo").src))}catch(e){}
+      var K=72/25.4,M=15,W=210,page,y=0;
+      var rgb=function(c){return PL.rgb(c[0]/255,c[1]/255,c[2]/255)};
+      var T=function(t,x,yy,size,bold,c){page.drawText(lat(t),{x:x*K,y:(297-yy)*K,size:size,font:bold?fB:fR,color:rgb(c||[0,0,0])})};
+      var R=function(x,yt,w,hh,c){page.drawRectangle({x:x*K,y:(297-yt-hh)*K,width:w*K,height:hh*K,color:rgb(c)})};
+      var Ln=function(x1,y1,x2,y2,c){page.drawLine({start:{x:x1*K,y:(297-y1)*K},end:{x:x2*K,y:(297-y2)*K},thickness:0.6,color:rgb(c)})};
+      var fit=function(t,w,size){t=lat(t);while(t.length>1&&fR.widthOfTextAtSize(t,size)>w*K)t=t.slice(0,-1);return t};
+      var newPage=function(){page=doc.addPage([W*K,297*K]);y=20};
+      sets.forEach(function(x){
+        newPage();
+        R(0,0,W,6,[15,107,87]);R(0,6,W,2,[29,95,209]);
+        if(logo)page.drawImage(logo,{x:M*K,y:(297-34)*K,width:22*K,height:22*K});
+        T("Al Noor Roza Tul Ilm Public High School",M+27,21,15,true,[15,107,87]);
+        T("Manki, Swabi",M+27,28,11,false,[15,107,87]);
+        Ln(M,38,W-M,38,[200,200,200]);
+        T("Daily Attendance Report",M,48,13,true,[29,95,209]);
+        T("Class: "+x.c.name,M,56,11);T("Teacher: "+(x.c.teacher||"-"),M,62,11);T("Date: "+fmtDate(date),M,68,11);
+        T("Absent: "+x.g.A.length+"    Leave: "+x.g.L.length+(x.g.N.length?"    Not marked: "+x.g.N.length:"")+"    Total students: "+x.list.length,M,77,11);
+        y=89;
+        [["A","Absent",[179,38,30]],["L","Leave",[199,119,0]]].forEach(function(sc){
+          var arr=x.g[sc[0]];
+          if(y>255)newPage();
+          R(M,y-5,W-2*M,8,sc[2]);T(sc[1]+" ("+arr.length+")",M+2,y,11,true,[255,255,255]);y+=8;
+          if(!arr.length){T("None",M+2,y,11,false,[110,110,110]);y+=7}
+          arr.forEach(function(s){
+            if(y>278)newPage();
+            T(s.roll||"-",M+2,y,11);T(fit(s.name,66,11),M+16,y,11);T(fit("Father: "+(s.father||"-"),70,11),M+100,y,11);
+            Ln(M,y+2.5,W-M,y+2.5,[225,225,225]);y+=7.5;
+          });
+          y+=5;
+        });
+        if(y>262)newPage();
+        y+=10;Ln(W-M-60,y,W-M,y,[120,120,120]);T("Teacher signature",W-M-60,y+6,11);
+      });
+      var by="Prepared by Muhammad Ishfaq  |  Phone # 03149768207";
+      doc.getPages().forEach(function(pg){var w=fR.widthOfTextAtSize(by,9);pg.drawText(by,{x:(W*K-w)/2,y:(297-289)*K,size:9,font:fR,color:rgb([91,115,109])})});
+      var bytes=await doc.save();
+      var nm=all?"all-classes":String(sets[0].c.name).replace(/[^\w-]+/g,"-");
+      var fn="attendance-"+nm+"-"+date+".pdf",blob=new Blob([bytes],{type:"application/pdf"});
+      if(share){await sharePdf(fn,blob,out,reportText(date,all));return}
+      await saveFile(fn,blob);
+      out.textContent="PDF saved for "+fmtDate(date)+".";
+    }catch(e){out.textContent=(e&&e.code==="declined")?"":"The PDF could not be saved. Please try again."}
+  }
+  function visCls(){return S.classes.filter(function(c){return !gf||c.grp===gf})}
+  function fixCur(){var v=visCls();if(!v.some(function(c){return c.id===S.cur}))S.cur=v.length?v[0].id:null}
+  function key(s){return (s.name+"|"+(s.father||"")).toLowerCase()}
+  function nameHtml(s){return esc(s.name)+(s.father?'<div class="sub2">Father: '+esc(s.father)+'</div>':'')}
+  
+  function parseRows(rows){
+    var hi=-1,ix={};
+    for(var k=0;k<Math.min(rows.length,5)&&hi<0;k++){
+      var m={};
+      rows[k].forEach(function(x,i){
+        var c=String(x==null?"":x).trim().toLowerCase();
+        if(/father|walid|guardian/.test(c)){if(m.f==null)m.f=i}
+        else if(/^(student'?s?\s*)?(name|naam)$/.test(c)){if(m.n==null)m.n=i}
+        else if(/roll|^sr|serial|^s\.?\s*no/.test(c)){if(m.r==null)m.r=i}
+      });
+      if(m.n!=null){hi=k;ix=m}
+    }
+    if(hi<0)return parseSimple(rows);
+    var out=[];
+    rows.slice(hi+1).forEach(function(r){
+      var g=function(i){return i==null?"":String(r[i]==null?"":r[i]).trim()};
+      var name=g(ix.n);if(!name)return;
+      out.push({name:name,roll:g(ix.r),father:g(ix.f)});
+    });
+    return out;
+  }
+  function csvRows(t){
+    var rows=[],row=[],cur="",q=false;
+    for(var i=0;i<t.length;i++){
+      var ch=t[i];
+      if(q){if(ch==='"'){if(t[i+1]==='"'){cur+='"';i++}else q=false}else cur+=ch}
+      else if(ch==='"')q=true;
+      else if(ch===","||ch===";"||ch==="\t"){row.push(cur);cur=""}
+      else if(ch==="\n"){row.push(cur);rows.push(row);row=[];cur=""}
+      else if(ch!=="\r")cur+=ch;
+    }
+    row.push(cur);rows.push(row);return rows;
+  }
+  function xmlTxt(el){return Array.prototype.map.call(el.getElementsByTagName("t"),function(n){return n.textContent}).join("")}
+  function xmlDoc(s){return new DOMParser().parseFromString(s,"application/xml")}
+  async function readRows(f){
+    var nm=f.name.toLowerCase();
+    if(/\.(csv|txt)$/.test(nm))return csvRows((await f.text()).replace(/^\uFEFF/,""));
+    if(/\.xls$/.test(nm))throw new Error("xls");
+    var z=await JSZip.loadAsync(await f.arrayBuffer()),shared=[],ss=z.file("xl/sharedStrings.xml");
+    if(ss)Array.prototype.forEach.call(xmlDoc(await ss.async("string")).getElementsByTagName("si"),function(si){shared.push(xmlTxt(si))});
+    var path="xl/worksheets/sheet1.xml";
+    try{
+      var wb=xmlDoc(await z.file("xl/workbook.xml").async("string")),sh=wb.getElementsByTagName("sheet")[0];
+      var rid=sh.getAttribute("r:id")||sh.getAttributeNS("http://schemas.openxmlformats.org/officeDocument/2006/relationships","id");
+      Array.prototype.forEach.call(xmlDoc(await z.file("xl/_rels/workbook.xml.rels").async("string")).getElementsByTagName("Relationship"),function(r){
+        if(r.getAttribute("Id")===rid){var tg=r.getAttribute("Target");path=tg.charAt(0)==="/"?tg.slice(1):"xl/"+tg}
+      });
+    }catch(e){}
+    var sf=z.file(path);if(!sf)throw new Error("bad");
+    var rows=[];
+    Array.prototype.forEach.call(xmlDoc(await sf.async("string")).getElementsByTagName("row"),function(rw){
+      var arr=[];
+      Array.prototype.forEach.call(rw.getElementsByTagName("c"),function(c){
+        var m=(c.getAttribute("r")||"").match(/^([A-Z]+)/),ci=arr.length;
+        if(m){ci=0;for(var k=0;k<m[1].length;k++)ci=ci*26+m[1].charCodeAt(k)-64;ci--}
+        var t=c.getAttribute("t"),v=c.getElementsByTagName("v")[0],val="";
+        if(t==="s"&&v)val=shared[+v.textContent]||"";
+        else if(t==="inlineStr")val=xmlTxt(c);
+        else if(v)val=v.textContent;
+        while(arr.length<ci)arr.push("");
+        arr[ci]=String(val).trim();
+      });
+      var rn=+(rw.getAttribute("r")||rows.length+1);
+      while(rows.length<rn-1)rows.push([]);
+      rows[rn-1]=arr;
+    });
+    return rows;
+  }
+  function xlsxBlob(data){
+    var H='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>',z=new JSZip();
+    z.file("[Content_Types].xml",H+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/></Types>');
+    z.file("_rels/.rels",H+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>');
+    z.file("xl/workbook.xml",H+'<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Students" sheetId="1" r:id="rId1"/></sheets></workbook>');
+    z.file("xl/_rels/workbook.xml.rels",H+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/></Relationships>');
+    var rows=data.map(function(r,i){return '<row r="'+(i+1)+'">'+r.map(function(v,j){
+      var ref=String.fromCharCode(65+j)+(i+1);
+      return typeof v==="number"?'<c r="'+ref+'"><v>'+v+'</v></c>':'<c r="'+ref+'" t="inlineStr"><is><t>'+esc(v)+'</t></is></c>'}).join("")+'</row>'}).join("");
+    z.file("xl/worksheets/sheet1.xml",H+'<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><cols><col min="1" max="1" width="10" customWidth="1"/><col min="2" max="3" width="26" customWidth="1"/></cols><sheetData>'+rows+'</sheetData></worksheet>');
+    return z.generateAsync({type:"blob",mimeType:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+  }
+  function b64bytes(u){var b=atob(u.split(",")[1]),a=new Uint8Array(b.length);for(var i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return a}
+  function saveFile(name,blob){
+    if(dl)return dl.save({filename:name,data:blob});
+    return new Promise(function(res){var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},2000);res()});
+  }
+  $("tplBtn").onclick=function(){
+    xlsxBlob([["Roll No","Student Name","Father Name"],[1,"Ahmed Khan","Gul Khan"],[2,"Bilal Shah","Noor Shah"]])
+      .then(function(b){return saveFile("student-import-template.xlsx",b)})
+      .then(function(){xmsg("Template saved. Fill it in, then import it here.")})
+      .catch(function(e){if(!(e&&e.code==="declined"))xmsg("The template could not be saved. Please try again.")});
+  };
+  function printDoc(title,meta,cols,rows,msg,fallback){
+    $("printArea").innerHTML='<div class="ph"><img src="'+$("logo").src+'" alt=""><div><h2>Al Noor Roza Tul Ilm Public High School</h2><div>Manki, Swabi</div></div></div><h3>'+esc(title)+'</h3><div>'+meta.map(function(m){return esc(m)}).join(" &nbsp;|&nbsp; ")+'</div><table><thead><tr>'+cols.map(function(c){return '<th>'+esc(c)+'</th>'}).join("")+'</tr></thead><tbody>'+rows.join("")+'</tbody></table><div class="sig">Teacher signature</div><div class="by">Prepared by Muhammad Ishfaq | Phone # 03149768207</div>';
+    var ok=false,seen=function(){ok=true};window.addEventListener("beforeprint",seen);msg.textContent="";
+    try{window.print()}catch(e){}
+    setTimeout(function(){window.removeEventListener("beforeprint",seen);if(ok)return;if(fallback)fallback();else msg.textContent="Printing did not open. Use your browser's print option."},800);
+  }
+  function printDay(date,out,all){
+    var sets=reportSets(date,all);
+    if(!sets.length){out.textContent=all?"No class has attendance marked for this day.":"Mark attendance for this day first.";return}
+    var names={P:"Present",A:"Absent",L:"Leave",N:"Not marked"};
+    $("printArea").innerHTML=sets.map(function(x){
+      return '<div class="cls"><div class="ph"><img src="'+$("logo").src+'" alt=""><div><h2>Al Noor Roza Tul Ilm Public High School</h2><div>Manki, Swabi</div></div></div><h3>Daily Attendance Report</h3><div>'+["Class: "+x.c.name,"Teacher: "+(x.c.teacher||"-"),"Date: "+fmtDate(date)].map(function(m){return esc(m)}).join(" &nbsp;|&nbsp; ")+'</div><div class="tot">Absent '+x.g.A.length+' | Leave '+x.g.L.length+(x.g.N.length?' | Not marked '+x.g.N.length:'')+' | Total students '+x.list.length+'</div>'+
+      ["A","L"].map(function(k){
+        var a=x.g[k];
+        return '<div class="sec '+k+'b">'+names[k]+' ('+a.length+')</div><table><thead><tr><th>Roll</th><th>Name</th><th>Father Name</th></tr></thead><tbody>'+(a.length?a.map(function(s){return '<tr><td>'+esc(s.roll||"-")+'</td><td>'+esc(s.name)+'</td><td>'+esc(s.father||"-")+'</td></tr>'}).join(""):'<tr><td colspan="3">None</td></tr>')+'</tbody></table>'}).join("")+
+      '<div class="sig">Teacher signature</div><div class="by">Prepared by Muhammad Ishfaq | Phone # 03149768207</div></div>';
+    }).join("");
+    out.textContent="If the print window does not open, use Download PDF and print that file.";
+    try{window.print()}catch(e){}
+  }
+  function printReport(){
+    var out=$("repHint"),list=sorted(),c=curCls();
+    var days=Object.keys(S.records).filter(function(d){return list.some(function(s){return S.records[d][s.id]})});
+    if(!list.length||!days.length){out.textContent="Mark attendance for at least one day first.";return}
+    var rows=list.map(function(s){
+      var p=0,a=0,l=0;days.forEach(function(d){var v=S.records[d][s.id];if(v==="P")p++;else if(v==="A")a++;else if(v==="L")l++});
+      var t=p+a+l;
+      return '<tr><td>'+esc(s.roll||"-")+'</td><td>'+esc(s.name)+'</td><td>'+esc(s.father||"-")+'</td><td>'+p+'</td><td>'+a+'</td><td>'+l+'</td><td><b>'+(t?Math.round(p/t*100):0)+'%</b></td></tr>'});
+    printDoc("Attendance Report",["Class: "+c.name,"Teacher: "+(c.teacher||"-"),days.length+(days.length===1?" day":" days")+" recorded"],["Roll","Name","Father Name","Present","Absent","Leave","Percent"],rows,out,function(){reportPdf(list,days,c,out)});
+  }
+  function safeName(s){return String(s).replace(/[^\w-]+/g,"-")}
+  async function pdfTable(title,meta,cols,rows,filename,out){
+    var PL=window.PDFLib;
+    if(!PL){out.textContent="The PDF tool did not load. Reload the page and try again.";return}
+    out.textContent="Preparing PDF...";
+    try{
+      var doc=await PL.PDFDocument.create();
+      var fR=await doc.embedFont(PL.StandardFonts.Helvetica),fB=await doc.embedFont(PL.StandardFonts.HelveticaBold),logo=null;
+      try{logo=await doc.embedJpg(b64bytes($("logo").src))}catch(e){}
+      var K=72/25.4,M=15,W=210,page,y=0;
+      var rgb=function(c){return PL.rgb(c[0]/255,c[1]/255,c[2]/255)};
+      var T=function(t,x,yy,size,bold,c){page.drawText(lat(t),{x:x*K,y:(297-yy)*K,size:size,font:bold?fB:fR,color:rgb(c||[0,0,0])})};
+      var R=function(x,yt,w,hh,c){page.drawRectangle({x:x*K,y:(297-yt-hh)*K,width:w*K,height:hh*K,color:rgb(c)})};
+      var Ln=function(x1,y1,x2,y2,c){page.drawLine({start:{x:x1*K,y:(297-y1)*K},end:{x:x2*K,y:(297-y2)*K},thickness:0.6,color:rgb(c)})};
+      var fit=function(t,w,size){t=lat(t);while(t.length>1&&fR.widthOfTextAtSize(t,size)>w*K)t=t.slice(0,-1);return t};
+      var newPage=function(){page=doc.addPage([W*K,297*K]);y=20};
+      newPage();
+      R(0,0,W,6,[15,107,87]);R(0,6,W,2,[29,95,209]);
+      if(logo)page.drawImage(logo,{x:M*K,y:(297-34)*K,width:22*K,height:22*K});
+      T("Al Noor Roza Tul Ilm Public High School",M+27,21,15,true,[15,107,87]);
+      T("Manki, Swabi",M+27,28,11,false,[15,107,87]);
+      Ln(M,38,W-M,38,[200,200,200]);
+      T(title,M,48,13,true,[29,95,209]);
+      meta.forEach(function(m,i){T(m,M,56+i*6,11)});
+      y=56+meta.length*6+8;
+      var th=function(){R(M,y-5,W-2*M,8,[214,232,255]);cols.forEach(function(k){T(k.h,k.x,y,10.5,true)})};
+      th();y+=8;
+      rows.forEach(function(r){
+        if(y>278){newPage();th();y+=8}
+        cols.forEach(function(k,i){T(fit(r[i],k.w,11),k.x,y,11)});
+        Ln(M,y+2.5,W-M,y+2.5,[225,225,225]);y+=7.5;
+      });
+      if(y>262){newPage();y=30}
+      y+=14;Ln(W-M-60,y,W-M,y,[120,120,120]);T("Teacher signature",W-M-60,y+6,11);
+      var by="Prepared by Muhammad Ishfaq  |  Phone # 03149768207";
+      doc.getPages().forEach(function(pg){var w=fR.widthOfTextAtSize(by,9);pg.drawText(by,{x:(W*K-w)/2,y:(297-289)*K,size:9,font:fR,color:rgb([91,115,109])})});
+      var bytes=await doc.save();
+      await saveFile(filename,new Blob([bytes],{type:"application/pdf"}));
+      out.textContent="PDF saved. Open the file to print it.";
+    }catch(e){out.textContent=(e&&e.code==="declined")?"":"The PDF could not be saved. Please try again."}
+  }
+  function reportPdf(list,days,c,out){
+    var rows=list.map(function(s){var p=0,a=0,l=0;days.forEach(function(d){var v=S.records[d][s.id];if(v==="P")p++;else if(v==="A")a++;else if(v==="L")l++});var t=p+a+l;return [s.roll||"-",s.name,s.father||"-",String(p),String(a),String(l),(t?Math.round(p/t*100):0)+"%"]});
+    pdfTable("Attendance Report",["Class: "+c.name,"Teacher: "+(c.teacher||"-"),days.length+(days.length===1?" day":" days")+" recorded"],[{h:"Roll",x:17,w:12},{h:"Name",x:32,w:48},{h:"Father Name",x:82,w:40},{h:"Present",x:124,w:16},{h:"Absent",x:142,w:16},{h:"Leave",x:160,w:14},{h:"Percent",x:176,w:18}],rows,"report-"+safeName(c.name)+".pdf",out);
+  }
+  function printStudents(){
+    var out=$("xmsg"),list=sorted(),c=curCls();
+    if(!list.length){out.textContent="Add students to this class first.";return}
+    var meta=["Class: "+c.name,"Teacher: "+(c.teacher||"-"),list.length+(list.length===1?" student":" students")];
+    var rows=list.map(function(s){return '<tr><td>'+esc(s.roll||"-")+'</td><td>'+esc(s.name)+'</td><td>'+esc(s.father||"-")+'</td></tr>'});
+    printDoc("Student List",meta,["Roll","Name","Father Name"],rows,out,function(){
+      pdfTable("Student List",meta,[{h:"Roll",x:17,w:12},{h:"Name",x:32,w:70},{h:"Father Name",x:104,w:80}],list.map(function(s){return [s.roll||"-",s.name,s.father||"-"]}),"students-"+safeName(c.name)+".pdf",out);
+    });
+  }
+  $("printStu").onclick=printStudents;
+  $("printBtn").onclick=function(){printDay(dateEl.value,$("pdfMsg"),false)};
+  $("printAll").onclick=function(){printDay(dateEl.value,$("pdfMsg"),true)};
+  $("rdate").onchange=function(){dateEl.value=$("rdate").value||today();render()};
+  $("printRep").onclick=printReport;
+  function reportText(date,all){
+    var sets=reportSets(date,all);if(!sets.length)return "";
+    var lines=["Al Noor Roza Tul Ilm Public High School","Manki, Swabi","Daily Attendance Report","Date: "+fmtDate(date),""];
+    sets.forEach(function(x){
+      lines.push("Class: "+x.c.name+(x.c.teacher?" (Teacher: "+x.c.teacher+")":""));
+      [["A","Absent"],["L","Leave"]].forEach(function(k){
+        var a=x.g[k[0]];
+        lines.push(k[1]+" ("+a.length+")"+(a.length?":":": None"));
+        a.forEach(function(s){lines.push("- "+(s.roll?s.roll+". ":"")+s.name+(s.father?" (Father: "+s.father+")":""))});
+      });
+      lines.push("Total students: "+x.list.length,"");
+    });
+    lines.push("Prepared by Muhammad Ishfaq | 03149768207");
+    return lines.join("\n");
+  }
+  async function sharePdf(name,blob,out,text){
+    var f=new File([blob],name,{type:"application/pdf"});
+    if(navigator.canShare&&navigator.canShare({files:[f]})){
+      try{await navigator.share({files:[f],title:name,text:text||""});out.textContent="Choose where to send the PDF (WhatsApp, email, and so on).";return}
+      catch(e){if(e&&e.name==="AbortError"){out.textContent="";return}}
+    }
+    await saveFile(name,blob);
+    out.textContent="Sharing is not available here, so the PDF was saved. Attach it in WhatsApp or any app.";
+  }
+  $("shP1").onclick=function(){makePdf(dateEl.value,$("pdfMsg"),false,true)};
+  $("shPA").onclick=function(){makePdf(dateEl.value,$("pdfMsg"),true,true)};
+  function drawReport(x,date){
+    var W=1080,P=50,RH=52,SH=56,rowsA=Math.max(1,x.g.A.length),rowsL=Math.max(1,x.g.L.length);
+    var H=500+(SH+rowsA*RH+34)+(SH+rowsL*RH+34)+150+70;
+    var c=document.createElement("canvas");c.width=W;c.height=H;
+    var g=c.getContext("2d"),F="Arial, Helvetica, sans-serif";
+    var fit=function(t,w){t=String(t);while(t.length>1&&g.measureText(t).width>w)t=t.slice(0,-1);return t};
+    g.fillStyle="#fff";g.fillRect(0,0,W,H);
+    g.fillStyle="#0f6b57";g.fillRect(0,0,W,22);g.fillStyle="#1d5fd1";g.fillRect(0,22,W,8);
+    try{g.drawImage($("logo"),P,62,112,112)}catch(e){}
+    var nameTxt="Al Noor Roza Tul Ilm Public High School",fs=40;
+    g.font="bold "+fs+"px "+F;
+    while(g.measureText(nameTxt).width>W-P*2-135&&fs>24){fs-=2;g.font="bold "+fs+"px "+F}
+    g.fillStyle="#0f6b57";g.fillText(nameTxt,P+135,110);
+    g.font="28px "+F;g.fillText("Manki, Swabi",P+135,152);
+    g.fillStyle="#c8c8c8";g.fillRect(P,200,W-P*2,3);
+    g.fillStyle="#1d5fd1";g.font="bold 38px "+F;g.fillText("Daily Attendance Report",P,258);
+    g.fillStyle="#000";g.font="30px "+F;
+    g.fillText(fit("Class: "+x.c.name,W-P*2),P,312);
+    g.fillText(fit("Teacher: "+(x.c.teacher||"-"),W-P*2),P,354);
+    g.fillText("Date: "+fmtDate(date),P,396);
+    g.font="bold 30px "+F;
+    g.fillText("Absent: "+x.g.A.length+"    Leave: "+x.g.L.length+(x.g.N.length?"    Not marked: "+x.g.N.length:"")+"    Total students: "+x.list.length,P,452);
+    var y=490;
+    [["A","Absent","#b3261e"],["L","Leave","#c77700"]].forEach(function(sc){
+      var arr=x.g[sc[0]];
+      g.fillStyle=sc[2];g.fillRect(P,y,W-P*2,SH);
+      g.fillStyle="#fff";g.font="bold 30px "+F;g.fillText(sc[1]+" ("+arr.length+")",P+16,y+39);y+=SH;
+      g.font="28px "+F;
+      if(!arr.length){g.fillStyle="#6e6e6e";g.fillText("None",P+16,y+36);y+=RH}
+      arr.forEach(function(s){
+        g.fillStyle="#000";g.fillText(s.roll||"-",P+16,y+36);g.fillText(fit(s.name,400),P+100,y+36);
+        g.fillStyle="#555";g.fillText(fit("Father: "+(s.father||"-"),W-P*2-560),P+540,y+36);
+        g.fillStyle="#e1e1e1";g.fillRect(P,y+RH-2,W-P*2,2);y+=RH;
+      });
+      y+=34;
+    });
+    y+=50;g.fillStyle="#787878";g.fillRect(W-P-300,y,300,2);
+    g.fillStyle="#000";g.font="26px "+F;g.fillText("Teacher signature",W-P-300,y+38);
+    var by="Prepared by Muhammad Ishfaq  |  Phone # 03149768207";
+    g.fillStyle="#5b736d";g.font="24px "+F;g.fillText(by,(W-g.measureText(by).width)/2,H-28);
+    return new Promise(function(res){c.toBlob(res,"image/jpeg",0.92)});
+  }
+  async function shareJpg(date,out,all){
+    var sets=reportSets(date,all);
+    if(!sets.length){out.textContent=all?"No class has attendance marked for this day.":"Mark attendance for this day first.";return}
+    out.textContent="Preparing image...";
+    try{
+      var files=[];
+      for(var i=0;i<sets.length;i++){
+        var blob=await drawReport(sets[i],date);
+        files.push(new File([blob],"attendance-"+safeName(sets[i].c.name)+"-"+date+".jpg",{type:"image/jpeg"}));
+      }
+      if(navigator.canShare&&navigator.canShare({files:files})){
+        try{await navigator.share({files:files,title:"Daily Attendance Report",text:reportText(date,all)});out.textContent="Choose WhatsApp to send the image.";return}
+        catch(e){if(e&&e.name==="AbortError"){out.textContent="";return}}
+      }
+      for(var j=0;j<files.length;j++)await saveFile(files[j].name,files[j]);
+      out.textContent="Sharing is not available here, so the image was saved. Attach it in WhatsApp.";
+    }catch(e){out.textContent="The image could not be created. Please try again."}
+  }
+  $("shJ1").onclick=function(){shareJpg(dateEl.value,$("pdfMsg"),false)};
+  $("shJA").onclick=function(){shareJpg(dateEl.value,$("pdfMsg"),true)};
+  var pendingBk=null,pendingInfo=null;
+  function backupText(){
+    return JSON.stringify({app:"al-noor-attendance",version:2,saved:new Date().toISOString(),data:S});
+  }
+  function bkSay(t){$("bkMsg").textContent=t}
+  function bkDownload(name,blob){
+    return new Promise(function(res,rej){
+      try{
+        var url=URL.createObjectURL(blob),a=document.createElement("a");
+        a.href=url;a.download=name;a.style.display="none";
+        document.body.appendChild(a);a.click();
+        setTimeout(function(){try{URL.revokeObjectURL(url)}catch(e){}a.remove()},30000);
+        res();
+      }catch(e){rej(e)}
+    });
+  }
+  $("bkBtn").onclick=function(){
+    var name="attendance-backup-"+today()+".json";
+    var blob=new Blob([backupText()],{type:"application/json"});
+    bkSay("Saving backup...");
+    var job=dl?dl.save({filename:name,data:blob}):bkDownload(name,blob);
+    job.then(function(){
+      bkSay(dl?"Backup saved. Keep the file safe, for example on WhatsApp or Google Drive.":"Backup downloaded. Check your Downloads folder. If you see no file, open the text option below and tap Copy backup text.");
+    }).catch(function(e){
+      if(e&&e.code==="declined"){bkSay("");return}
+      bkSay("The backup file could not be saved. Open the text option below and tap Copy backup text instead.");
+      var d=document.querySelector(".bkalt");if(d)d.open=true;
+    });
+  };
+  $("bkCopy").onclick=function(){
+    var t=backupText(),box=$("bkText");
+    function fallback(){
+      box.value=t;box.focus();box.select();
+      var ok=false;try{ok=document.execCommand("copy")}catch(e){}
+      bkSay(ok?"Backup text copied. Paste it into WhatsApp, Notes or email to keep it.":"Select all the text in the box, copy it, and keep it somewhere safe.");
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){box.value=t;bkSay("Backup text copied. Paste it into WhatsApp, Notes or email to keep it.")},fallback);
+    }else fallback();
+  };
+  function readFileText(f){
+    return new Promise(function(res,rej){
+      var r=new FileReader();
+      r.onload=function(){res(String(r.result||""))};
+      r.onerror=function(){rej(r.error||new Error("read"))};
+      r.readAsText(f);
+    });
+  }
+  function parseBackup(t){
+    t=String(t||"").replace(/^\uFEFF/,"").trim();
+    if(!t)throw new Error("empty");
+    var o=JSON.parse(t);
+    var d=o&&o.data&&typeof o.data==="object"?o.data:o;
+    if(!d||typeof d!=="object"||!Array.isArray(d.students)||!d.records||typeof d.records!=="object"||Array.isArray(d.records))throw new Error("bad");
+    if(d.classes!==undefined&&!Array.isArray(d.classes))throw new Error("bad");
+    if(!d.classes)d.classes=[];
+    return {d:d,saved:o&&o.saved};
+  }
+  function previewBackup(text){
+    try{
+      var p=parseBackup(text),d=p.d,n=d.classes.length;
+      pendingBk=d;
+      var days=Object.keys(d.records).length;
+      bkSay("Backup found: "+n+(n===1?" class, ":" classes, ")+d.students.length+(d.students.length===1?" student, ":" students, ")+days+(days===1?" day":" days")+" of attendance"+(p.saved?" (saved "+String(p.saved).slice(0,10)+")":"")+". Restoring replaces everything now in the app.");
+      $("bkPrev").hidden=false;
+    }catch(e){
+      pendingBk=null;$("bkPrev").hidden=true;
+      bkSay("This is not a valid backup. Choose the backup file made by this app, or paste the full backup text.");
+    }
+  }
+  $("rsBtn").onclick=function(){$("rsFile").click()};
+  $("rsFile").onchange=function(){
+    var inp=this,f=inp.files&&inp.files[0];
+    if(!f)return;
+    readFileText(f).then(function(t){inp.value="";previewBackup(t)},function(){
+      inp.value="";pendingBk=null;$("bkPrev").hidden=true;
+      bkSay("The file could not be read. Try the text option below.");
+    });
+  };
+  $("bkPaste").onclick=function(){
+    var t=$("bkText").value;
+    if(!t.trim()){bkSay("Paste the backup text in the box first.");return}
+    previewBackup(t);
+  };
+  $("bkOk").onclick=function(){
+    if(!pendingBk)return;
+    var d=pendingBk;pendingBk=null;
+    d.students=d.students.filter(function(s){return s&&typeof s==="object"});
+    if(!d.classes.length)d.classes=[{id:"c1",name:"Class 1"}];
+    d.students.forEach(function(s){if(!s.cls||!d.classes.some(function(c){return c.id===s.cls}))s.cls=d.classes[0].id});
+    d.classes.forEach(function(c){delete c.grp});
+    if(!d.cur||!d.classes.some(function(c){return c.id===d.cur}))d.cur=d.classes[0].id;
+    S=d;
+    var saved=true;
+    try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){saved=false}
+    $("bkPrev").hidden=true;$("bkText").value="";
+    render();
+    bkSay(saved?"Backup restored.":"Backup restored for now, but this browser could not store it. Do not close the page before taking a new backup.");
+  };
+  $("bkNo").onclick=function(){pendingBk=null;$("bkPrev").hidden=true;bkSay("")};
+  function curCls(){return S.classes.filter(function(c){return c.id===S.cur})[0]||{id:null,name:"",teacher:"",grp:""}}
+  function renderTeacher(){
+    var c=curCls(),n=inCls().length;
+    if(!c.id){$("tinfo").innerHTML='<span>No classes here yet. Tap + New class to add one.</span>';return}
+    $("tinfo").innerHTML='<span>Teacher: '+(c.teacher?esc(c.teacher):'name not set')+', '+n+(n===1?' student':' students')+'</span><button class="btn ghost" id="editCls">Edit</button>';
+    $("editCls").onclick=function(){openForm(c)};
+  }
+  function render(){fixCur();renderClasses();renderTeacher();renderMark();renderStudents();renderReport();$("rdate").value=dateEl.value;renderDayView()}
+  render();
+})();
+</script>
+</body>
+</html>
